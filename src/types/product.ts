@@ -5,6 +5,16 @@ export interface Product {
 
   weight: number;
 
+  printHours: number;
+
+  filamentPriceKg: number;
+
+  energyPriceHour: number;
+
+  maintenance: number;
+
+  multiplier: number;
+
   materialCost: number;
 
   energyCost: number;
@@ -18,6 +28,8 @@ export interface Product {
   idealPrice: number;
 
   premiumPrice: number;
+
+  notes: string;
 
   createdAt: string;
 }

@@ -1,9 +1,13 @@
 import { useMemo, useState } from "react";
-import { calculateCosts } from "../../utils/calculations";
-import ResultCard from "./ResultCard";
+
 import Card from "../ui/Card";
 import Button from "../ui/Button";
+import ResultCard from "./ResultCard";
+
+import { calculateCosts } from "../../utils/calculations";
+
 import { useProductStore } from "../../store/productStore";
+
 import type { Product } from "../../types/product";
 
 export default function CalculatorForm() {
@@ -11,12 +15,16 @@ export default function CalculatorForm() {
 
   const [productName, setProductName] = useState("");
 
+  const [notes, setNotes] = useState("");
+
   const [filamentPriceKg, setFilamentPriceKg] = useState(100);
+
   const [weightGrams, setWeightGrams] = useState(20);
 
   const [energyPriceHour, setEnergyPriceHour] = useState(0.8);
 
   const [hours, setHours] = useState(2);
+
   const [minutes, setMinutes] = useState(0);
 
   const [maintenance, setMaintenance] = useState(0.5);
@@ -51,15 +59,31 @@ export default function CalculatorForm() {
 
       weight: weightGrams,
 
+      printHours,
+
+      filamentPriceKg,
+
+      energyPriceHour,
+
+      maintenance,
+
+      multiplier,
+
       materialCost: result.materialCost,
+
       energyCost: result.energyCost,
+
       maintenanceCost: result.maintenanceCost,
 
       totalCost: result.totalCost,
 
       minimumPrice: result.minimumPrice,
+
       idealPrice: result.idealPrice,
+
       premiumPrice: result.premiumPrice,
+
+      notes,
 
       createdAt: new Date().toISOString(),
     };
@@ -67,17 +91,18 @@ export default function CalculatorForm() {
     addProduct(product);
 
     alert("Produto salvo com sucesso!");
+
+    setProductName("");
+    setNotes("");
   }
 
   return (
     <div className="calculator-grid">
       <Card title="Dados da Impressão">
-        <h2>Calculadora de Custos</h2>
-
         <label>
           Nome do Produto
+
           <input
-            type="text"
             value={productName}
             onChange={(e) => setProductName(e.target.value)}
           />
@@ -85,72 +110,103 @@ export default function CalculatorForm() {
 
         <label>
           Valor do Filamento (R$/kg)
+
           <input
             type="number"
             value={filamentPriceKg}
-            onChange={(e) => setFilamentPriceKg(Number(e.target.value))}
+            onChange={(e) =>
+              setFilamentPriceKg(Number(e.target.value))
+            }
           />
         </label>
 
         <label>
-          Peso da Peça (g)
+          Peso (g)
+
           <input
             type="number"
             value={weightGrams}
-            onChange={(e) => setWeightGrams(Number(e.target.value))}
+            onChange={(e) =>
+              setWeightGrams(Number(e.target.value))
+            }
           />
         </label>
 
         <label>
           Energia (R$/hora)
+
           <input
             type="number"
             step="0.01"
             value={energyPriceHour}
-            onChange={(e) => setEnergyPriceHour(Number(e.target.value))}
+            onChange={(e) =>
+              setEnergyPriceHour(Number(e.target.value))
+            }
           />
         </label>
 
         <div className="time-grid">
           <label>
             Horas
+
             <input
               type="number"
               value={hours}
-              onChange={(e) => setHours(Number(e.target.value))}
+              onChange={(e) =>
+                setHours(Number(e.target.value))
+              }
             />
           </label>
 
           <label>
             Minutos
+
             <input
               type="number"
               value={minutes}
-              onChange={(e) => setMinutes(Number(e.target.value))}
+              onChange={(e) =>
+                setMinutes(Number(e.target.value))
+              }
             />
           </label>
         </div>
 
         <label>
           Manutenção
+
           <input
             type="number"
             step="0.01"
             value={maintenance}
-            onChange={(e) => setMaintenance(Number(e.target.value))}
+            onChange={(e) =>
+              setMaintenance(Number(e.target.value))
+            }
           />
         </label>
 
         <label>
           Multiplicador
+
           <select
             value={multiplier}
-            onChange={(e) => setMultiplier(Number(e.target.value))}
+            onChange={(e) =>
+              setMultiplier(Number(e.target.value))
+            }
           >
             <option value={2}>2x</option>
             <option value={3}>3x</option>
             <option value={4}>4x</option>
           </select>
+        </label>
+
+        <label>
+          Observações
+
+          <textarea
+            rows={4}
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+          />
         </label>
 
         <Button onClick={handleSaveProduct}>
@@ -181,17 +237,17 @@ export default function CalculatorForm() {
           />
 
           <ResultCard
-            title="Preço Mínimo (2x)"
+            title="Preço Mínimo"
             value={`R$ ${result.minimumPrice.toFixed(2)}`}
           />
 
           <ResultCard
-            title="Preço Ideal (3x)"
+            title="Preço Ideal"
             value={`R$ ${result.idealPrice.toFixed(2)}`}
           />
 
           <ResultCard
-            title="Preço Premium (4x)"
+            title="Preço Premium"
             value={`R$ ${result.premiumPrice.toFixed(2)}`}
           />
         </div>
