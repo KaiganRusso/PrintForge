@@ -1,19 +1,19 @@
 type ButtonProps = {
   children: React.ReactNode;
-  onClick?: () => void;
   type?: "button" | "submit";
+  onClick?: () => void;
 };
 
 export default function Button({
   children,
-  onClick,
   type = "button",
+  onClick,
 }: ButtonProps) {
   return (
     <button
       type={type}
-      onClick={onClick}
       className="pf-button"
+      onClick={onClick}
     >
       {children}
     </button>
