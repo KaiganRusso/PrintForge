@@ -1,13 +1,22 @@
 :root {
-  --bg-primary: #111827;
-  --bg-secondary: #1f2937;
+  --background: #0f172a;
+  --surface: #1e293b;
+  --surface-light: #334155;
 
-  --text-primary: #ffffff;
-  --text-secondary: #9ca3af;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
 
-  --primary: #2563eb;
   --success: #22c55e;
+  --warning: #f59e0b;
   --danger: #ef4444;
 
-  --radius: 16px;
+  --text: #f8fafc;
+  --text-secondary: #94a3b8;
+
+  --border: rgba(255,255,255,.08);
+
+  --radius: 18px;
+
+  --shadow:
+    0 10px 25px rgba(0,0,0,.30);
 }
