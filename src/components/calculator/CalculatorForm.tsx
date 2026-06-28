@@ -2,8 +2,13 @@ import { useMemo, useState } from "react";
 import { calculateCosts } from "../../utils/calculations";
 import ResultCard from "./ResultCard";
 import Card from "../ui/Card";
+import Button from "../ui/Button";
+import { useProductStore } from "../../store/productStore";
+import type { Product } from "../../types/product";
 
 export default function CalculatorForm() {
+  const addProduct = useProductStore((state) => state.addProduct);
+
   const [productName, setProductName] = useState("");
 
   const [filamentPriceKg, setFilamentPriceKg] = useState(100);
@@ -38,6 +43,32 @@ export default function CalculatorForm() {
     multiplier,
   ]);
 
+  function handleSaveProduct() {
+    const product: Product = {
+      id: crypto.randomUUID(),
+
+      name: productName || "Produto sem nome",
+
+      weight: weightGrams,
+
+      materialCost: result.materialCost,
+      energyCost: result.energyCost,
+      maintenanceCost: result.maintenanceCost,
+
+      totalCost: result.totalCost,
+
+      minimumPrice: result.minimumPrice,
+      idealPrice: result.idealPrice,
+      premiumPrice: result.premiumPrice,
+
+      createdAt: new Date().toISOString(),
+    };
+
+    addProduct(product);
+
+    alert("Produto salvo com sucesso!");
+  }
+
   return (
     <div className="calculator-grid">
       <Card title="Dados da Impressão">
@@ -57,9 +88,7 @@ export default function CalculatorForm() {
           <input
             type="number"
             value={filamentPriceKg}
-            onChange={(e) =>
-              setFilamentPriceKg(Number(e.target.value))
-            }
+            onChange={(e) => setFilamentPriceKg(Number(e.target.value))}
           />
         </label>
 
@@ -68,9 +97,7 @@ export default function CalculatorForm() {
           <input
             type="number"
             value={weightGrams}
-            onChange={(e) =>
-              setWeightGrams(Number(e.target.value))
-            }
+            onChange={(e) => setWeightGrams(Number(e.target.value))}
           />
         </label>
 
@@ -80,9 +107,7 @@ export default function CalculatorForm() {
             type="number"
             step="0.01"
             value={energyPriceHour}
-            onChange={(e) =>
-              setEnergyPriceHour(Number(e.target.value))
-            }
+            onChange={(e) => setEnergyPriceHour(Number(e.target.value))}
           />
         </label>
 
@@ -92,9 +117,7 @@ export default function CalculatorForm() {
             <input
               type="number"
               value={hours}
-              onChange={(e) =>
-                setHours(Number(e.target.value))
-              }
+              onChange={(e) => setHours(Number(e.target.value))}
             />
           </label>
 
@@ -103,9 +126,7 @@ export default function CalculatorForm() {
             <input
               type="number"
               value={minutes}
-              onChange={(e) =>
-                setMinutes(Number(e.target.value))
-              }
+              onChange={(e) => setMinutes(Number(e.target.value))}
             />
           </label>
         </div>
@@ -116,9 +137,7 @@ export default function CalculatorForm() {
             type="number"
             step="0.01"
             value={maintenance}
-            onChange={(e) =>
-              setMaintenance(Number(e.target.value))
-            }
+            onChange={(e) => setMaintenance(Number(e.target.value))}
           />
         </label>
 
@@ -126,15 +145,17 @@ export default function CalculatorForm() {
           Multiplicador
           <select
             value={multiplier}
-            onChange={(e) =>
-              setMultiplier(Number(e.target.value))
-            }
+            onChange={(e) => setMultiplier(Number(e.target.value))}
           >
             <option value={2}>2x</option>
             <option value={3}>3x</option>
             <option value={4}>4x</option>
           </select>
         </label>
+
+        <Button onClick={handleSaveProduct}>
+          Salvar Produto
+        </Button>
       </Card>
 
       <Card title="Resultado">

@@ -1,5 +1,6 @@
 import { DollarSign, Box, Printer, Clock3 } from "lucide-react";
 import StatCard from "../components/ui/StatCard";
+import ProductList from "../components/dashboard/ProductList";
 
 export default function Dashboard() {
   return (
@@ -31,6 +32,8 @@ export default function Dashboard() {
           icon={<Clock3 />}
         />
       </div>
+
+      <ProductList />
     </>
   );
 }
