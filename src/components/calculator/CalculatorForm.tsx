@@ -8,7 +8,7 @@ import { calculateCosts } from "../../utils/calculations";
 
 import { useProductStore } from "../../store/productStore";
 
-import type { Product } from "../../types/product";
+import type { Product } from "../../types/models/product";
 
 export default function CalculatorForm() {
   const addProduct = useProductStore((state) => state.addProduct);

@@ -1,7 +1,7 @@
 import type {
   CalculatorInput,
   CalculatorResult,
-} from "../types/calculator";
+} from "../types/models/calculator";
 
 export function calculateCosts(
   data: CalculatorInput

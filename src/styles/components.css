@@ -299,3 +299,54 @@ overflow:auto;
 
   font-size: .82rem;
 }
+
+/* ===========================
+   PAGE HEADER
+=========================== */
+
+.page-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    font-size:2rem;
+    margin:0;
+}
+
+.page-header p{
+    color:#6b7280;
+    margin-top:6px;
+}
+
+.page-header-actions{
+    display:flex;
+    gap:12px;
+}
+
+/* ===========================
+   STAT CARD
+=========================== */
+
+.stat-card{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.stat-title{
+    color:#c7cdda;
+    font-size:.9rem;
+}
+
+.stat-value{
+    font-size:2rem;
+    margin:0;
+    color:#ffffff;
+}
+
+.stat-subtitle{
+    color:#9ca3af;
+}

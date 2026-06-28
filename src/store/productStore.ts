@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Product } from "../types/product";
+import type { Product } from "../types/models/product";
 
 interface ProductStore {
   products: Product[];

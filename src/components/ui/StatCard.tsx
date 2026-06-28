@@ -1,22 +1,35 @@
-type StatCardProps = {
+import Card from "./Card";
+
+interface StatCardProps {
   title: string;
-  value: string;
-  icon?: React.ReactNode;
-};
+  value: string | number;
+  subtitle?: string;
+}
 
 export default function StatCard({
   title,
   value,
-  icon,
+  subtitle,
 }: StatCardProps) {
   return (
-    <div className="stat-card">
-      <div className="stat-header">
-        <span>{title}</span>
-        {icon}
-      </div>
+    <Card>
+      <div className="stat-card">
 
-      <h2>{value}</h2>
-    </div>
+        <span className="stat-title">
+          {title}
+        </span>
+
+        <h2 className="stat-value">
+          {value}
+        </h2>
+
+        {subtitle && (
+          <small className="stat-subtitle">
+            {subtitle}
+          </small>
+        )}
+
+      </div>
+    </Card>
   );
 }
