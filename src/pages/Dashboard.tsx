@@ -1,16 +1,35 @@
-import StatCard from "../components/dashboard/StatCard";
+import { DollarSign, Box, Printer, Clock3 } from "lucide-react";
+import StatCard from "../components/ui/StatCard";
 
 export default function Dashboard() {
   return (
     <>
-      <div className="cards">
-        <StatCard title="Custo Total" value="R$ 0,00" />
+      <h1>Dashboard</h1>
 
-        <StatCard title="Lucro" value="R$ 0,00" />
+      <div className="stats-grid">
+        <StatCard
+          title="Lucro"
+          value="R$ 0,00"
+          icon={<DollarSign />}
+        />
 
-        <StatCard title="Peças Produzidas" value="0" />
+        <StatCard
+          title="Produtos"
+          value="0"
+          icon={<Box />}
+        />
 
-        <StatCard title="Filamento Consumido" value="0 g" />
+        <StatCard
+          title="Impressões"
+          value="0"
+          icon={<Printer />}
+        />
+
+        <StatCard
+          title="Horas"
+          value="0h"
+          icon={<Clock3 />}
+        />
       </div>
     </>
   );
