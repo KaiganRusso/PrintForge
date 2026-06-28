@@ -1,0 +1,13 @@
+:root {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+
+  --primary: #2563eb;
+  --success: #22c55e;
+  --danger: #ef4444;
+
+  --radius: 16px;
+}

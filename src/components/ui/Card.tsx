@@ -1,18 +1,19 @@
-import type { ReactNode } from "react";
-
-type Props = {
+type CardProps = {
   title: string;
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
-export default function Card({ title, children }: Props) {
+export default function Card({
+  title,
+  children,
+}: CardProps) {
   return (
-    <section className="card">
-      <div className="card-header">
+    <section className="pf-card">
+      <header className="pf-card-header">
         <h3>{title}</h3>
-      </div>
+      </header>
 
-      <div className="card-body">
+      <div className="pf-card-content">
         {children}
       </div>
     </section>

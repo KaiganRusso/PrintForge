@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.page {
+  flex: 1;
+  padding: 30px;
+}
+
+.content {
+  margin-top: 20px;
+}

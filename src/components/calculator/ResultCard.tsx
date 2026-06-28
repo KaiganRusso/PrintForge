@@ -1,4 +1,4 @@
-type ResultCardProps = {
+type Props = {
   title: string;
   value: string;
 };
@@ -6,10 +6,11 @@ type ResultCardProps = {
 export default function ResultCard({
   title,
   value,
-}: ResultCardProps) {
+}: Props) {
   return (
     <div className="result-card">
       <span>{title}</span>
+
       <strong>{value}</strong>
     </div>
   );
